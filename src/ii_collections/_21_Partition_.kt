@@ -12,6 +12,7 @@ fun example8() {
 
 fun Shop.getCustomersWithMoreUndeliveredOrdersThanDelivered(): Set<Customer> {
     // Return customers who have more undelivered orders than delivered
+    // NOTE: customers.filter would have made more sense, but customers.partition is how I did it, so....
     val (undelivereds, delivereds) = customers.partition(fun (it: Customer): Boolean {
         val (dCt, uCt) = it.orders.partition{ it.isDelivered }
         if ( uCt.size > dCt.size ) return true
