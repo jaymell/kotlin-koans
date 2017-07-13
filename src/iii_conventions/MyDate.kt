@@ -36,3 +36,14 @@ operator fun DateRange.contains(date: MyDate): Boolean =
 operator fun MyDate.rangeTo(other: MyDate): DateRange {
     return DateRange(this, other)
 }
+
+///// copied straight from website b/c what? instructions make no fucking sense
+operator fun MyDate.plus(timeInterval: TimeInterval) = addTimeIntervals(timeInterval, 1)
+
+class RepeatedTimeInterval(val timeInterval: TimeInterval, val number: Int)
+
+operator fun TimeInterval.times(number: Int) = RepeatedTimeInterval(this, number)
+
+operator fun MyDate.plus(timeIntervals: RepeatedTimeInterval) =
+        this.addTimeIntervals(timeIntervals.timeInterval, timeIntervals.number)
+////
