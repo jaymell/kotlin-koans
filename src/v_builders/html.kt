@@ -45,9 +45,11 @@ fun html(init: Html.() -> Unit): Html = Html().apply(init)
 fun Html.table(init : Table.() -> Unit) = doInit(Table(), init)
 fun Html.center(init : Center.() -> Unit) = doInit(Center(), init)
 
-fun Table.tr(color: String? = null, init : TR.() -> Unit) = doInit(TR(), init).set("bgcolor", color)
+fun Table.tr(color: String? = null, init : TR.() -> Unit) =
+        doInit(TR(), init).set("bgcolor", color)
 
-fun TR.td(color: String? = null, align : String = "left", init : TD.() -> Unit) = doInit(TD(), init).set("align", align).set("bgcolor", color)
+fun TR.td(color: String? = null, align : String = "left", init : TD.() -> Unit) =
+        doInit(TD(), init).set("align", align).set("bgcolor", color)
 
 fun Tag.text(s : Any?) = doInit(Text(s.toString()), {})
 
